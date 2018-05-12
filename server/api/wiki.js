@@ -1,11 +1,9 @@
-// api/users.js
+// api/wiki
 const router = require('express').Router();
-const { User } = require('../models');
-
+const { Page } = require('../models');
 
 router.get('/', function (req, res, next) { 
-  const newUser = new User({name: 'Hello', email: '1.com' })
-  newUser.save()
+  
 });
 
 
