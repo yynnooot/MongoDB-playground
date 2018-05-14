@@ -1,12 +1,6 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema;
 
-mongoose.connect('mongodb://localhost/demo');
-
-const db = mongoose.connection;
-
-db.on('error', console.error.bind(console, 'mongodb connection error:'));
-
 const statuses = ['open', 'closed'];
 
 const pageSchema = new mongoose.Schema({
@@ -26,17 +20,10 @@ const userSchema = new mongoose.Schema({
   email: {type: String, required: true}
 });
 
-const teacherSchema = new Schema({
-  name: {type: String, required: true, unique: true},
-  school: {type: String, required: true}
-})
-
 const Page = mongoose.model('Page', pageSchema);
 const User = mongoose.model('User', userSchema);
-const Teacher = mongoose.model('Teacher', teacherSchema);
 
 module.exports = {
-  Page,
-  User,
-  Teacher
-};
+  User, 
+  Page
+}

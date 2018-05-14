@@ -3,9 +3,20 @@ const app = express();
 const path = require('path')
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
+
 const mongoose = require('mongoose')
-const Schema = mongoose.Schema;
 mongoose.connect('mongodb://localhost/demo');
+let db = mongoose.connection;
+
+//check connection
+db.once('open', function(){
+  console.log('Connected to MongoDB')
+})
+//check for db errors 
+db.on('error', function(){
+  console.log(err)
+})
+
 
 app.use(morgan('dev'));
 
